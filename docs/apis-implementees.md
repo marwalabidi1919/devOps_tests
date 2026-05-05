@@ -1,14 +1,14 @@
-# APIs Externes Implémentées dans SkillUpTn
+﻿# APIs Externes ImplÃ©mentÃ©es dans SkillUpTn
 
-Documentation complète des 4 APIs externes déjà intégrées dans le projet SkillUpTn.
+Documentation complÃ¨te des 4 APIs externes dÃ©jÃ  intÃ©grÃ©es dans le projet SkillUpTn.
 
 ---
 
-## Table des Matières
+## Table des MatiÃ¨res
 
 1. [OpenRouter API - AutoPrompt (Prompt Rewriter)](#1-openrouter-api---autoprompt)
 2. [Maps API - Mapbox + Leaflet (Location Picker)](#2-maps-api---mapbox--leaflet)
-3. [Weather API - Open-Meteo (Widget Météo)](#3-weather-api---open-meteo)
+3. [Weather API - Open-Meteo (Widget MÃ©tÃ©o)](#3-weather-api---open-meteo)
 4. [DeepL API - Traduction Professionnelle](#4-deepl-api---traduction-professionnelle)
 
 ---
@@ -17,32 +17,32 @@ Documentation complète des 4 APIs externes déjà intégrées dans le projet Sk
 
 ### Description
 
-**OpenRouter** est une API qui fournit un accès unifié à plusieurs modèles de langage (LLM) comme GPT-4, Claude, Llama, etc. Dans SkillUpTn, elle est utilisée pour le **Prompt Rewriter** - une fonctionnalité qui améliore automatiquement les textes saisis par les utilisateurs (descriptions d'activités, compétences, etc.).
+**OpenRouter** est une API qui fournit un accÃ¨s unifiÃ© Ã  plusieurs modÃ¨les de langage (LLM) comme GPT-4, Claude, Llama, etc. Dans SkillUpTn, elle est utilisÃ©e pour le **Prompt Rewriter** - une fonctionnalitÃ© qui amÃ©liore automatiquement les textes saisis par les utilisateurs (descriptions d'activitÃ©s, compÃ©tences, etc.).
 
 **Fournisseur** : OpenRouter (openrouter.ai)
 **Type** : Intelligence Artificielle / LLM
-**Coût** : Pay-as-you-go (crédits API)
+**CoÃ»t** : Pay-as-you-go (crÃ©dits API)
 
 ### Cas d'Usage dans SkillUpTn
 
-- **Amélioration descriptions formations** : Transforme une description basique en texte professionnel
-- **Génération compétences requises** : Suggère les compétences nécessaires pour une formation
-- **Réécriture objectifs** : Formule des objectifs pédagogiques clairs
+- **AmÃ©lioration descriptions formations** : Transforme une description basique en texte professionnel
+- **GÃ©nÃ©ration compÃ©tences requises** : SuggÃ¨re les compÃ©tences nÃ©cessaires pour une formation
+- **RÃ©Ã©criture objectifs** : Formule des objectifs pÃ©dagogiques clairs
 - **Correction orthographe** : Corrige automatiquement les textes saisis
 
-### Fichiers Liés
+### Fichiers LiÃ©s
 
 ```
 frontend/
-├── src/
-│   ├── pages/
-│   │   └── shared/
-│   │       └── PromptRewriter.tsx      # Interface utilisateur
-│   └── services/
-│       └── openRouterService.ts        # Service API (à créer)
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ pages/
+â”‚   â”‚   â””â”€â”€ shared/
+â”‚   â”‚       â””â”€â”€ PromptRewriter.tsx      # Interface utilisateur
+â”‚   â””â”€â”€ services/
+â”‚       â””â”€â”€ openRouterService.ts        # Service API (Ã  crÃ©er)
 ```
 
-### Implémentation Technique
+### ImplÃ©mentation Technique
 
 #### Configuration
 
@@ -59,9 +59,9 @@ const OPENROUTER_API = 'https://openrouter.ai/api/v1';
 
 export async function rewritePrompt(prompt: string, type: 'description' | 'skills' | 'objectives') {
   const systemMessages = {
-    description: 'Tu es un expert en pédagogie. Améliore cette description de formation pour la rendre professionnelle, attractive et complète.',
-    skills: 'Liste les compétences techniques et soft skills nécessaires pour cette formation, séparées par des virgules.',
-    objectives: 'Formule 3 objectifs pédagogiques SMART pour cette formation.'
+    description: 'Tu es un expert en pÃ©dagogie. AmÃ©liore cette description de formation pour la rendre professionnelle, attractive et complÃ¨te.',
+    skills: 'Liste les compÃ©tences techniques et soft skills nÃ©cessaires pour cette formation, sÃ©parÃ©es par des virgules.',
+    objectives: 'Formule 3 objectifs pÃ©dagogiques SMART pour cette formation.'
   };
 
   const response = await fetch(`${OPENROUTER_API}/chat/completions`, {
@@ -117,18 +117,18 @@ export default function PromptRewriter() {
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Améliorateur de Texte IA</h1>
+      <h1 className="text-2xl font-bold mb-4">AmÃ©liorateur de Texte IA</h1>
       
       <div className="mb-4">
-        <label className="block text-sm font-medium mb-2">Type d'amélioration</label>
+        <label className="block text-sm font-medium mb-2">Type d'amÃ©lioration</label>
         <select 
           value={type} 
           onChange={(e) => setType(e.target.value as any)}
           className="w-full p-2 border rounded"
         >
           <option value="description">Description de formation</option>
-          <option value="skills">Compétences requises</option>
-          <option value="objectives">Objectifs pédagogiques</option>
+          <option value="skills">CompÃ©tences requises</option>
+          <option value="objectives">Objectifs pÃ©dagogiques</option>
         </select>
       </div>
 
@@ -139,12 +139,12 @@ export default function PromptRewriter() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             className="w-full h-64 p-4 border rounded resize-none"
-            placeholder="Décrivez votre formation ici..."
+            placeholder="DÃ©crivez votre formation ici..."
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">Version améliorée</label>
+          <label className="block text-sm font-medium mb-2">Version amÃ©liorÃ©e</label>
           <textarea
             value={output}
             readOnly
@@ -159,7 +159,7 @@ export default function PromptRewriter() {
         className="mt-4 px-6 py-2 bg-primary text-white rounded flex items-center gap-2 disabled:opacity-50"
       >
         {loading ? <Loader2 className="animate-spin" /> : <Sparkles />}
-        {loading ? 'Amélioration...' : 'Améliorer avec IA'}
+        {loading ? 'AmÃ©lioration...' : 'AmÃ©liorer avec IA'}
       </button>
     </div>
   );
@@ -177,10 +177,10 @@ import PromptRewriter from './pages/shared/PromptRewriter';
 <Route path="/admin/prompt-rewriter" element={<PromptRewriter />} />
 ```
 
-### Dépendances
+### DÃ©pendances
 
 ```bash
-npm install lucide-react  # Si pas déjà installé
+npm install lucide-react  # Si pas dÃ©jÃ  installÃ©
 ```
 
 ### Tests
@@ -202,49 +202,49 @@ describe('OpenRouter Service', () => {
 
 ### Description
 
-L'intégration combine **Mapbox** (tuiles cartographiques personnalisables) et **Leaflet** (bibliothèque JavaScript de cartographie interactive). Elle permet la sélection de localisation précise pour les formations via une carte interactive.
+L'intÃ©gration combine **Mapbox** (tuiles cartographiques personnalisables) et **Leaflet** (bibliothÃ¨que JavaScript de cartographie interactive). Elle permet la sÃ©lection de localisation prÃ©cise pour les formations via une carte interactive.
 
 **Fournisseurs** : 
 - Mapbox (mapbox.com) - Tuiles et geocoding
-- Leaflet (leafletjs.com) - Bibliothèque cartographie
+- Leaflet (leafletjs.com) - BibliothÃ¨que cartographie
 
-**Type** : Géolocalisation / Cartographie
-**Coût** : Mapbox a un tier gratuit (50,000 requêtes/mois)
+**Type** : GÃ©olocalisation / Cartographie
+**CoÃ»t** : Mapbox a un tier gratuit (50,000 requÃªtes/mois)
 
 ### Cas d'Usage dans SkillUpTn
 
-- **Création d'activité** : Sélection de l'emplacement exact de la formation sur la carte
-- **Demande d'activité (Manager)** : Indiquer où se déroulera la formation
+- **CrÃ©ation d'activitÃ©** : SÃ©lection de l'emplacement exact de la formation sur la carte
+- **Demande d'activitÃ© (Manager)** : Indiquer oÃ¹ se dÃ©roulera la formation
 - **Visualisation** : Affichage des lieux de formation sur une carte
 
-### Fichiers Liés
+### Fichiers LiÃ©s
 
 ```
 frontend/
-├── package.json                        # Dependencies: leaflet, react-leaflet
-├── src/
-│   ├── components/
-│   │   └── LocationPicker.tsx          # Composant carte principal
-│   ├── pages/
-│   │   ├── hr/
-│   │   │   └── CreateActivity.tsx      # Intégration LocationPicker
-│   │   └── manager/
-│   │       └── ManagerActivityRequests.tsx  # Intégration LocationPicker
-│   └── index.css                       # Styles Leaflet
+â”œâ”€â”€ package.json                        # Dependencies: leaflet, react-leaflet
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ components/
+â”‚   â”‚   â””â”€â”€ LocationPicker.tsx          # Composant carte principal
+â”‚   â”œâ”€â”€ pages/
+â”‚   â”‚   â”œâ”€â”€ hr/
+â”‚   â”‚   â”‚   â””â”€â”€ CreateActivity.tsx      # IntÃ©gration LocationPicker
+â”‚   â”‚   â””â”€â”€ manager/
+â”‚   â”‚       â””â”€â”€ ManagerActivityRequests.tsx  # IntÃ©gration LocationPicker
+â”‚   â””â”€â”€ index.css                       # Styles Leaflet
 ```
 
 backend/
-└── src/
-    ├── activities/
-    │   ├── dto/
-    │   │   └── create-activity.dto.ts  # LocationDto
-    │   └── schemas/
-    │       └── activity.schema.ts        # Schéma location
+â””â”€â”€ src/
+    â”œâ”€â”€ activities/
+    â”‚   â”œâ”€â”€ dto/
+    â”‚   â”‚   â””â”€â”€ create-activity.dto.ts  # LocationDto
+    â”‚   â””â”€â”€ schemas/
+    â”‚       â””â”€â”€ activity.schema.ts        # SchÃ©ma location
 ```
 
-### Implémentation Technique
+### ImplÃ©mentation Technique
 
-#### Dépendances
+#### DÃ©pendances
 
 ```bash
 npm install leaflet react-leaflet @types/leaflet
@@ -254,10 +254,10 @@ npm install leaflet react-leaflet @types/leaflet
 
 ```env
 # .env
-VITE_MAPBOX_TOKEN=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw
+VITE_MAPBOX_TOKEN=pk.your_mapbox_token_here
 ```
 
-#### Modèle de Données (Backend)
+#### ModÃ¨le de DonnÃ©es (Backend)
 
 ```typescript
 // backend/src/activities/dto/create-activity.dto.ts
@@ -317,7 +317,7 @@ interface LocationPickerProps {
   defaultCenter?: { lat: number; lng: number };
 }
 
-// Icône personnalisée pour le marqueur
+// IcÃ´ne personnalisÃ©e pour le marqueur
 const customIcon = new L.Icon({
   iconUrl: '/marker-icon.png',
   iconSize: [25, 41],
@@ -350,7 +350,7 @@ function LocationMarker({ onLocationSelect }: { onLocationSelect: (loc: Location
 export default function LocationPicker({ 
   value, 
   onChange, 
-  defaultCenter = { lat: 36.8065, lng: 10.1815 } // Tunis par défaut
+  defaultCenter = { lat: 36.8065, lng: 10.1815 } // Tunis par dÃ©faut
 }: LocationPickerProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -411,7 +411,7 @@ export default function LocationPicker({
         </MapContainer>
       </div>
 
-      {/* Affichage adresse sélectionnée */}
+      {/* Affichage adresse sÃ©lectionnÃ©e */}
       {value && (
         <div className="p-3 bg-gray-50 rounded">
           <p className="font-medium">{value.address}</p>
@@ -470,13 +470,13 @@ const handleSubmit = async () => {
 }
 ```
 
-### Fonctionnalités
+### FonctionnalitÃ©s
 
-1. **Carte interactive** : Zoom, déplacement, clic pour marquer
+1. **Carte interactive** : Zoom, dÃ©placement, clic pour marquer
 2. **Recherche d'adresse** : Autocomplete Mapbox Geocoding API
-3. **Reverse geocoding** : Adresse textuelle depuis coordonnées
-4. **Marqueur persistant** : Affiche la position sélectionnée
-5. **Tunis par défaut** : Centré sur Tunis (36.8065, 10.1815)
+3. **Reverse geocoding** : Adresse textuelle depuis coordonnÃ©es
+4. **Marqueur persistant** : Affiche la position sÃ©lectionnÃ©e
+5. **Tunis par dÃ©faut** : CentrÃ© sur Tunis (36.8065, 10.1815)
 
 ---
 
@@ -484,32 +484,32 @@ const handleSubmit = async () => {
 
 ### Description
 
-**Open-Meteo** est une API météo open source et gratuite qui fournit des prévisions météorologiques précises sans besoin de clé API. Elle est utilisée dans le widget météo affiché dans l'en-tête de l'application.
+**Open-Meteo** est une API mÃ©tÃ©o open source et gratuite qui fournit des prÃ©visions mÃ©tÃ©orologiques prÃ©cises sans besoin de clÃ© API. Elle est utilisÃ©e dans le widget mÃ©tÃ©o affichÃ© dans l'en-tÃªte de l'application.
 
 **Fournisseur** : Open-Meteo (open-meteo.com)
-**Type** : Météorologie
-**Coût** : 100% gratuit, open source
+**Type** : MÃ©tÃ©orologie
+**CoÃ»t** : 100% gratuit, open source
 **Limites** : Pas de rate limit strict
 
 ### Cas d'Usage dans SkillUpTn
 
-- **Widget en-tête** : Affiche météo actuelle et prévisions rapides
-- **Planning formations** : Vérifier conditions météo pour formations extérieures
-- **Dashboard employé** : Info météo quotidienne
+- **Widget en-tÃªte** : Affiche mÃ©tÃ©o actuelle et prÃ©visions rapides
+- **Planning formations** : VÃ©rifier conditions mÃ©tÃ©o pour formations extÃ©rieures
+- **Dashboard employÃ©** : Info mÃ©tÃ©o quotidienne
 
-### Fichiers Liés
+### Fichiers LiÃ©s
 
 ```
 frontend/
-├── src/
-│   ├── components/
-│   │   ├── WeatherWidget.tsx           # Widget compact header
-│   │   └── WeatherModal.tsx              # Modal détaillé prévisions
-│   └── components/layout/
-│       └── Header.tsx                    # Intégration WeatherWidget
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ components/
+â”‚   â”‚   â”œâ”€â”€ WeatherWidget.tsx           # Widget compact header
+â”‚   â”‚   â””â”€â”€ WeatherModal.tsx              # Modal dÃ©taillÃ© prÃ©visions
+â”‚   â””â”€â”€ components/layout/
+â”‚       â””â”€â”€ Header.tsx                    # IntÃ©gration WeatherWidget
 ```
 
-### Implémentation Technique
+### ImplÃ©mentation Technique
 
 #### API Endpoint
 
@@ -534,11 +534,11 @@ interface WeatherData {
 }
 
 const weatherCodes: Record<number, { icon: JSX.Element; description: string; color: string }> = {
-  0: { icon: <Sun />, description: 'Ensoleillé', color: 'text-yellow-500' },
+  0: { icon: <Sun />, description: 'EnsoleillÃ©', color: 'text-yellow-500' },
   1: { icon: <Cloud />, description: 'Partiellement nuageux', color: 'text-gray-500' },
   2: { icon: <Cloud />, description: 'Nuageux', color: 'text-gray-600' },
   3: { icon: <Cloud />, description: 'Couvert', color: 'text-gray-700' },
-  51: { icon: <CloudRain />, description: 'Pluie légère', color: 'text-blue-400' },
+  51: { icon: <CloudRain />, description: 'Pluie lÃ©gÃ¨re', color: 'text-blue-400' },
   61: { icon: <CloudRain />, description: 'Pluie', color: 'text-blue-600' },
   // ... autres codes
 };
@@ -561,7 +561,7 @@ export default function WeatherWidget({
 
   useEffect(() => {
     fetchWeather();
-    // Rafraîchir toutes les 30 minutes
+    // RafraÃ®chir toutes les 30 minutes
     const interval = setInterval(fetchWeather, 30 * 60 * 1000);
     return () => clearInterval(interval);
   }, [lat, lng]);
@@ -622,7 +622,7 @@ export default function WeatherWidget({
           {weatherInfo.icon}
         </span>
         <div className="flex flex-col items-start">
-          <span className="text-sm font-semibold">{weather.temperature}°C</span>
+          <span className="text-sm font-semibold">{weather.temperature}Â°C</span>
           <span className="text-xs text-muted-foreground">{city}</span>
         </div>
       </button>
@@ -632,7 +632,7 @@ export default function WeatherWidget({
           <div className="space-y-2 text-sm">
             <div className="flex items-center gap-2">
               <Thermometer className="w-4 h-4" />
-              <span>Ressenti: {weather.feelsLike}°C</span>
+              <span>Ressenti: {weather.feelsLike}Â°C</span>
             </div>
             <div className="flex items-center gap-2">
               <Wind className="w-4 h-4" />
@@ -640,7 +640,7 @@ export default function WeatherWidget({
             </div>
             <div className="flex items-center gap-2">
               <Droplets className="w-4 h-4" />
-              <span>Humidité: {weather.humidity}%</span>
+              <span>HumiditÃ©: {weather.humidity}%</span>
             </div>
           </div>
         </div>
@@ -660,7 +660,7 @@ export default function WeatherWidget({
 }
 ```
 
-#### Composant WeatherModal (Détaillé)
+#### Composant WeatherModal (DÃ©taillÃ©)
 
 ```typescript
 // src/components/WeatherModal.tsx
@@ -714,7 +714,7 @@ export default function WeatherModal({ isOpen, onClose, city, lat, lng }: Weathe
   };
 
   const searchLocation = async () => {
-    // Utiliser l'API de geocoding pour trouver les coordonnées
+    // Utiliser l'API de geocoding pour trouver les coordonnÃ©es
     try {
       const response = await fetch(
         `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(searchCity)}&count=1&language=fr&format=json`
@@ -722,7 +722,7 @@ export default function WeatherModal({ isOpen, onClose, city, lat, lng }: Weathe
       const data = await response.json();
       if (data.results?.[0]) {
         const { latitude, longitude, name } = data.results[0];
-        // Rafraîchir avec nouvelles coordonnées
+        // RafraÃ®chir avec nouvelles coordonnÃ©es
         fetchForecast();
       }
     } catch (error) {
@@ -757,7 +757,7 @@ export default function WeatherModal({ isOpen, onClose, city, lat, lng }: Weathe
         <div className="flex items-center justify-between p-4 border-b">
           <div className="flex items-center gap-3">
             <Sun className="w-6 h-6 text-yellow-500" />
-            <h2 className="text-xl font-semibold">Météo - {city}</h2>
+            <h2 className="text-xl font-semibold">MÃ©tÃ©o - {city}</h2>
           </div>
           <button
             onClick={onClose}
@@ -792,7 +792,7 @@ export default function WeatherModal({ isOpen, onClose, city, lat, lng }: Weathe
         <div className="p-4">
           <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
             <Calendar className="w-5 h-5" />
-            Prévisions 7 jours
+            PrÃ©visions 7 jours
           </h3>
 
           <div className="grid grid-cols-7 gap-2">
@@ -810,8 +810,8 @@ export default function WeatherModal({ isOpen, onClose, city, lat, lng }: Weathe
                 <div className="my-2 flex justify-center">
                   {getWeatherIcon(day.weatherCode)}
                 </div>
-                <p className="text-lg font-bold">{day.maxTemp}°</p>
-                <p className="text-sm text-gray-500">{day.minTemp}°</p>
+                <p className="text-lg font-bold">{day.maxTemp}Â°</p>
+                <p className="text-sm text-gray-500">{day.minTemp}Â°</p>
               </button>
             ))}
           </div>
@@ -820,14 +820,14 @@ export default function WeatherModal({ isOpen, onClose, city, lat, lng }: Weathe
           {selectedDay !== null && forecast[selectedDay] && (
             <div className="mt-4 p-4 bg-gray-50 rounded-lg">
               <h4 className="font-medium mb-3">
-                Détails pour {new Date(forecast[selectedDay].date).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })}
+                DÃ©tails pour {new Date(forecast[selectedDay].date).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })}
               </h4>
               <div className="grid grid-cols-3 gap-4">
                 <div className="flex items-center gap-3">
                   <Thermometer className="w-5 h-5 text-orange-500" />
                   <div>
                     <p className="text-sm text-gray-600">Max / Min</p>
-                    <p className="font-medium">{forecast[selectedDay].maxTemp}° / {forecast[selectedDay].minTemp}°</p>
+                    <p className="font-medium">{forecast[selectedDay].maxTemp}Â° / {forecast[selectedDay].minTemp}Â°</p>
                   </div>
                 </div>
               </div>
@@ -837,7 +837,7 @@ export default function WeatherModal({ isOpen, onClose, city, lat, lng }: Weathe
 
         {/* Footer */}
         <div className="p-4 border-t text-center text-sm text-gray-500">
-          Données fournies par Open-Meteo
+          DonnÃ©es fournies par Open-Meteo
         </div>
       </div>
     </div>,
@@ -846,7 +846,7 @@ export default function WeatherModal({ isOpen, onClose, city, lat, lng }: Weathe
 }
 ```
 
-#### Intégration dans Header
+#### IntÃ©gration dans Header
 
 ```typescript
 // src/components/layout/Header.tsx
@@ -859,21 +859,21 @@ import WeatherWidget from '../WeatherWidget';
   </div>
   
   <div className="flex items-center gap-4">
-    <WeatherWidget />  {/* Widget météo intégré */}
+    <WeatherWidget />  {/* Widget mÃ©tÃ©o intÃ©grÃ© */}
     
     {/* ... notifications, profil ... */}
   </div>
 </header>
 ```
 
-### Endpoints Open-Meteo Utilisés
+### Endpoints Open-Meteo UtilisÃ©s
 
-1. **Météo actuelle** :
+1. **MÃ©tÃ©o actuelle** :
    ```
    GET https://api.open-meteo.com/v1/forecast?latitude=36.8065&longitude=10.1815&current_weather=true
    ```
 
-2. **Prévisions 7 jours** :
+2. **PrÃ©visions 7 jours** :
    ```
    GET https://api.open-meteo.com/v1/forecast?latitude=36.8065&longitude=10.1815&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Africa/Tunis&forecast_days=7
    ```
@@ -883,62 +883,62 @@ import WeatherWidget from '../WeatherWidget';
    GET https://geocoding-api.open-meteo.com/v1/search?name=Tunis&count=1&language=fr
    ```
 
-### Codes Météo (WMO)
+### Codes MÃ©tÃ©o (WMO)
 
-| Code | Description | Icône |
+| Code | Description | IcÃ´ne |
 |------|-------------|-------|
-| 0 | Ensoleillé | ☀️ |
-| 1-3 | Nuageux | ☁️ |
-| 45, 48 | Brouillard | 🌫️ |
-| 51-55 | Pluie légère | 🌦️ |
-| 61-65 | Pluie | 🌧️ |
-| 71-77 | Neige | 🌨️ |
-| 95-99 | Orage | ⛈️ |
+| 0 | EnsoleillÃ© | â˜€ï¸ |
+| 1-3 | Nuageux | â˜ï¸ |
+| 45, 48 | Brouillard | ðŸŒ«ï¸ |
+| 51-55 | Pluie lÃ©gÃ¨re | ðŸŒ¦ï¸ |
+| 61-65 | Pluie | ðŸŒ§ï¸ |
+| 71-77 | Neige | ðŸŒ¨ï¸ |
+| 95-99 | Orage | â›ˆï¸ |
 
 ---
 
-## 4. Puter.js - Traduction LLM 100% Gratuite & Illimitée
+## 4. Puter.js - Traduction LLM 100% Gratuite & IllimitÃ©e
 
 ### Description
 
-**Puter.js** est une API basée sur LLM (GPT-4o-mini) qui permet la traduction **100% gratuite**, **sans limite** et **sans carte de crédit**. C'est le meilleur choix pour SkillUpTn car il fonctionne directement dans le frontend sans configuration.
+**Puter.js** est une API basÃ©e sur LLM (GPT-4o-mini) qui permet la traduction **100% gratuite**, **sans limite** et **sans carte de crÃ©dit**. C'est le meilleur choix pour SkillUpTn car il fonctionne directement dans le frontend sans configuration.
 
 **Fournisseur** : Puter.com (puter.com)  
 **Type** : Traduction LLM (GPT-4o-mini)  
-**Coût** : **100% Gratuit - Illimité**  
+**CoÃ»t** : **100% Gratuit - IllimitÃ©**  
 **Configuration** : Aucune (script CDN uniquement)  
 
-### Avantages Clés
+### Avantages ClÃ©s
 
-- ✅ **Pas d'API key** requise
-- ✅ **Pas de carte** de crédit
-- ✅ **Illimité** - Pas de quota journalier
-- ✅ **Fonctionne direct** dans le frontend
-- ✅ **Qualité LLM** - Traductions très naturelles
-- ✅ **Basé sur GPT-4o-mini** - Rapide et précis
+- âœ… **Pas d'API key** requise
+- âœ… **Pas de carte** de crÃ©dit
+- âœ… **IllimitÃ©** - Pas de quota journalier
+- âœ… **Fonctionne direct** dans le frontend
+- âœ… **QualitÃ© LLM** - Traductions trÃ¨s naturelles
+- âœ… **BasÃ© sur GPT-4o-mini** - Rapide et prÃ©cis
 
 ### Cas d'Usage dans SkillUpTn
 
-- **Traduction interface utilisateur** : Traduit tous les textes marqués avec `data-translatable="true"`
-- **Support multilingue** : 30+ langues supportées via LLM
-- **Traduction contextuelle** : Comprend le contexte métier RH/formations
-- **Immédiat** : Zéro configuration, prêt à l'emploi
+- **Traduction interface utilisateur** : Traduit tous les textes marquÃ©s avec `data-translatable="true"`
+- **Support multilingue** : 30+ langues supportÃ©es via LLM
+- **Traduction contextuelle** : Comprend le contexte mÃ©tier RH/formations
+- **ImmÃ©diat** : ZÃ©ro configuration, prÃªt Ã  l'emploi
 
-### Fichiers Liés
+### Fichiers LiÃ©s
 
 ```
 frontend/
-├── index.html                          # Script CDN Puter.js
-├── src/
-│   ├── services/
-│   │   └── puterService.ts            # Service API Puter.js (NOUVEAU)
-│   ├── context/
-│   │   └── TranslationContext.tsx     # Contexte utilisant Puter.js
-│   └── components/shared/
-│       └── AccessibilityWidget.tsx    # Sélecteur de langue
+â”œâ”€â”€ index.html                          # Script CDN Puter.js
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ services/
+â”‚   â”‚   â””â”€â”€ puterService.ts            # Service API Puter.js (NOUVEAU)
+â”‚   â”œâ”€â”€ context/
+â”‚   â”‚   â””â”€â”€ TranslationContext.tsx     # Contexte utilisant Puter.js
+â”‚   â””â”€â”€ components/shared/
+â”‚       â””â”€â”€ AccessibilityWidget.tsx    # SÃ©lecteur de langue
 ```
 
-### Implémentation Technique
+### ImplÃ©mentation Technique
 
 #### 1. Script CDN (index.html)
 
@@ -973,28 +973,28 @@ declare global {
 }
 
 /**
- * Vérifie si Puter.js est chargé
+ * VÃ©rifie si Puter.js est chargÃ©
  */
 export function isPuterAvailable(): boolean {
   return typeof window !== 'undefined' && !!window.puter?.ai?.chat;
 }
 
 /**
- * Traduit un texte avec Puter.js AI (100% gratuit, illimité)
+ * Traduit un texte avec Puter.js AI (100% gratuit, illimitÃ©)
  */
 export async function translateWithPuter(text: string, targetLang: string): Promise<string> {
-  // Si français ou vide, retourner le texte original
+  // Si franÃ§ais ou vide, retourner le texte original
   if (!text || targetLang.toLowerCase() === 'fr') {
     return text;
   }
 
-  // Vérifier si Puter est disponible
+  // VÃ©rifier si Puter est disponible
   if (!isPuterAvailable()) {
     console.warn('Puter.js not available, falling back to original text');
     return text;
   }
 
-  // Limiter à 1000 caractères pour éviter les timeouts
+  // Limiter Ã  1000 caractÃ¨res pour Ã©viter les timeouts
   const maxLength = 1000;
   const originalText = text;
   if (text.length > maxLength) {
@@ -1008,10 +1008,10 @@ Return ONLY the translated text, nothing else:
 "${text}"`;
 
     const result = await window.puter!.ai.chat(prompt, {
-      model: 'gpt-4o-mini',  // Modèle rapide et efficace
+      model: 'gpt-4o-mini',  // ModÃ¨le rapide et efficace
     });
 
-    // Nettoyer le résultat
+    // Nettoyer le rÃ©sultat
     let translated = result?.toString().trim() || text;
     if (translated.startsWith('"') && translated.endsWith('"')) {
       translated = translated.slice(1, -1);
@@ -1025,7 +1025,7 @@ Return ONLY the translated text, nothing else:
 }
 ```
 
-#### 3. Intégration dans TranslationContext
+#### 3. IntÃ©gration dans TranslationContext
 
 ```typescript
 // src/context/TranslationContext.tsx
@@ -1036,13 +1036,13 @@ const translateText = useCallback(async (text: string, targetLang: string): Prom
   if (!text || text.trim() === '') return text;
   if (targetLang === 'auto' || targetLang === 'fr') return text;
   
-  // Vérifier le cache
+  // VÃ©rifier le cache
   if (cacheRef.current[targetLang]?.[text]) {
     return cacheRef.current[targetLang][text];
   }
 
   try {
-    // Utiliser Puter.js AI (100% gratuit, pas de clé API, illimité)
+    // Utiliser Puter.js AI (100% gratuit, pas de clÃ© API, illimitÃ©)
     const translated = await translateWithPuter(text, targetLang);
     
     // Sauvegarder dans le cache
@@ -1061,56 +1061,56 @@ const translateText = useCallback(async (text: string, targetLang: string): Prom
 }, []);
 ```
 
-### Langues Supportées (Principales)
+### Langues SupportÃ©es (Principales)
 
 | Code | Langue | Drapeau |
 |------|--------|---------|
-| en | Anglais | 🇬🇧 |
-| es | Espagnol | 🇪🇸 |
-| de | Allemand | �🇪 |
-| it | Italien | 🇹 |
-| pt | Portugais | �� |
-| ru | Russe | �🇺 |
-| zh | Chinois | �� |
-| ja | Japonais | 🇯🇵 |
-| ar | Arabe | �� |
-| hi | Hindi | �� |
+| en | Anglais | ðŸ‡¬ðŸ‡§ |
+| es | Espagnol | ðŸ‡ªðŸ‡¸ |
+| de | Allemand | ï¿½ðŸ‡ª |
+| it | Italien | ðŸ‡¹ |
+| pt | Portugais | ï¿½ï¿½ |
+| ru | Russe | ï¿½ðŸ‡º |
+| zh | Chinois | ï¿½ï¿½ |
+| ja | Japonais | ðŸ‡¯ðŸ‡µ |
+| ar | Arabe | ï¿½ï¿½ |
+| hi | Hindi | ï¿½ï¿½ |
 
-*(30+ langues supportées via LLM GPT-4o-mini)*
+*(30+ langues supportÃ©es via LLM GPT-4o-mini)*
 
-### Fonctionnalités
+### FonctionnalitÃ©s
 
-1. **100% Gratuit** : Pas de carte de crédit, pas de limite
+1. **100% Gratuit** : Pas de carte de crÃ©dit, pas de limite
 2. **Sans API Key** : Aucune inscription requise
-3. **Qualité LLM** : Traductions naturelles avec GPT-4o-mini
+3. **QualitÃ© LLM** : Traductions naturelles avec GPT-4o-mini
 4. **Context-aware** : Comprend le contexte RH/formations
-5. **Cache intelligent** : Évite les appels répétés
+5. **Cache intelligent** : Ã‰vite les appels rÃ©pÃ©tÃ©s
 6. **Fallback automatique** : Retourne le texte original si erreur
 
 ### Comparaison des Services de Traduction
 
-| Critère | DeepL (Ancien) | MyMemory | **Puter.js (Nouveau)** |
+| CritÃ¨re | DeepL (Ancien) | MyMemory | **Puter.js (Nouveau)** |
 |---------|----------------|----------|------------------------|
-| **Coût** | 500k/mois (gratuit) | 1000 mots/jour | **100% gratuit, illimité** |
+| **CoÃ»t** | 500k/mois (gratuit) | 1000 mots/jour | **100% gratuit, illimitÃ©** |
 | **API Key** | Requise | Non requise | **Aucune** |
-| **Qualité** | ⭐⭐⭐⭐⭐ Excellente | ⭐⭐⭐ Correcte | **⭐⭐⭐⭐⭐ Excellente** |
-| **Limite** | 500k caractères/mois | 1000 mots/jour | **Aucune** |
-| **Setup** | Complexe (clé API) | Simple (GET) | **Très simple (CDN)** |
+| **QualitÃ©** | â­â­â­â­â­ Excellente | â­â­â­ Correcte | **â­â­â­â­â­ Excellente** |
+| **Limite** | 500k caractÃ¨res/mois | 1000 mots/jour | **Aucune** |
+| **Setup** | Complexe (clÃ© API) | Simple (GET) | **TrÃ¨s simple (CDN)** |
 | **Vitesse** | ~200ms | ~500ms | **~800ms** (LLM) |
-| **LLM** | ❌ Non | ❌ Non | **✅ GPT-4o-mini** |
+| **LLM** | âŒ Non | âŒ Non | **âœ… GPT-4o-mini** |
 
 ### Points d'Attention
 
-✅ **Avantages majeurs** :
-- **Zéro configuration** : Juste ajouter le script CDN
-- **Illimité** : Pas de quotas à surveiller
-- **Qualité supérieure** : LLM GPT-4o-mini pour des traductions naturelles
-- **Gratuit à vie** : Pas de risque de facturation
+âœ… **Avantages majeurs** :
+- **ZÃ©ro configuration** : Juste ajouter le script CDN
+- **IllimitÃ©** : Pas de quotas Ã  surveiller
+- **QualitÃ© supÃ©rieure** : LLM GPT-4o-mini pour des traductions naturelles
+- **Gratuit Ã  vie** : Pas de risque de facturation
 
-⚠️ **Considérations** :
-- **Latence légèrement plus élevée** (~800ms) comparé aux APIs traditionnelles
-- **Dépendance réseau** : Nécessite une connexion internet active
-- **Limite de taille** : 1000 caractères max par requête (recommandé)
+âš ï¸ **ConsidÃ©rations** :
+- **Latence lÃ©gÃ¨rement plus Ã©levÃ©e** (~800ms) comparÃ© aux APIs traditionnelles
+- **DÃ©pendance rÃ©seau** : NÃ©cessite une connexion internet active
+- **Limite de taille** : 1000 caractÃ¨res max par requÃªte (recommandÃ©)
 
 ---
 
@@ -1123,17 +1123,17 @@ const translateText = useCallback(async (text: string, targetLang: string): Prom
 VITE_OPENROUTER_API_KEY=sk-or-v1-xxxxxxxxxxxxxxxx
 
 # Mapbox (Location Picker)
-VITE_MAPBOX_TOKEN=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw
+VITE_MAPBOX_TOKEN=pk.your_mapbox_token_here
 
 # Puter.js (Translation) - 100% FREE, UNLIMITED, NO API KEY
 # Just add the CDN script to index.html:
 # <script src="https://js.puter.com/v2/"></script>
 
-# Open-Meteo (Weather) - Pas de clé requise !
+# Open-Meteo (Weather) - Pas de clÃ© requise !
 # API 100% gratuite et ouverte
 ```
 
-### Dépendances npm
+### DÃ©pendances npm
 
 ```json
 {
@@ -1155,13 +1155,14 @@ npm install leaflet react-leaflet @types/leaflet
 
 ---
 
-## 🚀 Prochaines Améliorations Suggérées
+## ðŸš€ Prochaines AmÃ©liorations SuggÃ©rÃ©es
 
-1. **OpenRouter** : Ajouter d'autres modèles (GPT-4, Llama) avec sélecteur
+1. **OpenRouter** : Ajouter d'autres modÃ¨les (GPT-4, Llama) avec sÃ©lecteur
 2. **Maps** : Afficher toutes les formations sur une carte globale
-3. **Puter.js** : Traduction LLM 100% gratuite, illimitée, sans API key
-4. **Weather** : Alertes météo pour formations extérieures (pluie, tempête)
+3. **Puter.js** : Traduction LLM 100% gratuite, illimitÃ©e, sans API key
+4. **Weather** : Alertes mÃ©tÃ©o pour formations extÃ©rieures (pluie, tempÃªte)
 
 ---
 
-*Document généré pour SkillUpTn - Mars 2025*
+*Document gÃ©nÃ©rÃ© pour SkillUpTn - Mars 2025*
+

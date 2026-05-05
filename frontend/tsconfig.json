@@ -22,5 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["src", "components", "hooks", "lib"]
+  "include": ["src", "components", "hooks", "lib"],
+  "exclude": ["src/**/*.test.tsx", "src/**/*.test.ts", "src/**/*.spec.tsx", "src/**/*.spec.ts", "src/test"]
 }

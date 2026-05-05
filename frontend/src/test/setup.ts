@@ -3,8 +3,7 @@
  * This file is executed before running tests
  */
 
-// Add any global test setup here
-// For example, you can add custom matchers, mock global objects, etc.
+import '@testing-library/jest-dom'
 
 // Mock MediaPipe if needed in tests
 (global as any).MediaPipe = {} as any;

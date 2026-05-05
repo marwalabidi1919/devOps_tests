@@ -5,7 +5,7 @@ import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class RolesGuard implements CanActivate {
-  constructor(private reflector: Reflector, private jwtService: JwtService) {}
+  constructor(private readonly reflector: Reflector, private readonly jwtService: JwtService) {}
 
   canActivate(context: ExecutionContext): boolean {
     const requiredRoles = this.reflector.get<string[]>('roles', context.getHandler());
@@ -23,7 +23,7 @@ export class RolesGuard implements CanActivate {
       request.user = decoded; // on attache l'utilisateur décodé à la requête
       const role = String(decoded?.role ?? '').toUpperCase();
       return requiredRoles.map((r) => String(r).toUpperCase()).includes(role);
-    } catch (e) {
+    } catch {
       return false;
     }
   }

@@ -163,7 +163,7 @@ export class CertificateService {
 
     if (!cert) throw new HttpException('Certificat introuvable', HttpStatus.NOT_FOUND)
 
-    const safeName = cert.activityTitle.replace(/[^a-z0-9]/gi, '_').toLowerCase()
+    const safeName = cert.activityTitle.replaceAll(/[^a-z0-9]/gi, '_').toLowerCase()
     return { pdfData: cert.pdfData, filename: `certificat_${safeName}.pdf` }
   }
 
@@ -186,7 +186,7 @@ export class CertificateService {
     const navyDark  = rgb(0.059, 0.122, 0.239)   // sidebar bg  #0F1F3D
     const navy      = rgb(0.118, 0.227, 0.431)   // secondary   #1E3A6E
     const orange    = rgb(0.976, 0.451, 0.086)   // primary     #F97316
-    const orangeLight = rgb(1.0,  0.82,  0.65)   // accent clair
+    const orangeLight = rgb(1.0,  0.82,  0.65)   // accent clair - used for decorative elements
     const white     = rgb(1, 1, 1)
     const offWhite  = rgb(0.94, 0.96, 0.99)
     const slate     = rgb(0.65, 0.73, 0.84)
